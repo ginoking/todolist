@@ -8,9 +8,10 @@ try {
 
 	$db->beginTransaction();
 
+
+	//需要判斷帳號有沒有存在
 	$sql = "insert into user (name,email,password) values (:name, :email, :pwd)";
 	$st = $db->prepare($sql);
-	//email is null?
 	$st->bindParam(':name',$name,PDO::PARAM_STR);
 	$st->bindParam(':email',$email,PDO::PARAM_STR);
 	$st->bindParam(':pwd',$pwd,PDO::PARAM_STR);
@@ -19,6 +20,7 @@ try {
 
 	$db->commit();
 
+	header("Location: /index.php");
 
 } catch (PDOException $e) {
 	error_log($e->getMessage());
