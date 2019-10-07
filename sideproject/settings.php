@@ -7,7 +7,7 @@ $db_ms = "mysql";
 $db_host = "localhost";
 $db_name = "sideproject";
 $user = "root";
-$pws = "";
+$pwd = "";
 
 try {
 	$db = new PDO("mysql:host={$db_host};dbname={$db_name};", $user, $pwd);
