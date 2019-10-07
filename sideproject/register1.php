@@ -1,8 +1,8 @@
 <?php  
 include_once __DIR__ . '/settings.php';
-echo $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-echo $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-echo $pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_MAGIC_QUOTES);
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_MAGIC_QUOTES);
 
 try {
 
