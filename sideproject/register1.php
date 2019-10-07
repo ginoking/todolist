@@ -12,7 +12,7 @@ try {
 	$st = $db->prepare($sql);
 	//email is null?
 	$st->bindParam(':name',$name,PDO::PARAM_STR);
-	$st->bindParam(':email',$eamil,PDO::PARAM_STR);
+	$st->bindParam(':email',$email,PDO::PARAM_STR);
 	$st->bindParam(':pwd',$pwd,PDO::PARAM_STR);
 	
 	$st->execute();
