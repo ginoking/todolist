@@ -1,5 +1,4 @@
 <?php  
-
 require_once "vendor/autoload.php";
 
 //資料庫連線
