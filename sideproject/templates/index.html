@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="row table-responsive">
+	<div class="col-md-12">
+		<h3 class="text-center">事項列表</h3>
+		<table class="table">
+		  	<thead class="thead-light">
+			    <tr>
+			      	<th scope="col" class="text-nowrap">狀態</th>
+			      	<th scope="col" class="text-nowrap">內容</th>
+			      	<th scope="col" class="text-nowrap">新增日期</th>
+			      	<th scope="col" class="text-nowrap">期限</th>
+			      	<th scope="col" class="text-nowrap">完成日期</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+		    	<tr>
+		      		<th scope="row">未完成</th>
+		      		<td>上完1000個標籤</td>
+		      		<td>2019-10-24</td>
+		      		<td>2019-10-24</td>
+		      		<td>尚未完成</td>
+		    	</tr>
+		    	<tr>
+		      		<th scope="row">2</th>
+		      		<td>Jacob</td>
+				    <td>Thornton</td>
+				    <td>@fat</td>
+		    	</tr>
+		    	<tr>
+			      	<th scope="row">3</th>
+			      	<td>Larry</td>
+			      	<td>the Bird</td>
+			      	<td>@twitter</td>
+		    	</tr>
+		  	</tbody>
+		</table>
+	</div>			
+</div>
+{% endblock %}

@@ -24,18 +24,21 @@ if ($exist == 0) {
 	try {
 
 		$db->beginTransaction();
+		//密碼加密
+		$pwd = password_hash($pwd1, PASSWORD_DEFAULT);
 
 		$sql = "insert into user (name,email,password) values (:name, :email, :pwd)";
 		$st = $db->prepare($sql);
 		$st->bindParam(':name',$name,PDO::PARAM_STR);
 		$st->bindParam(':email',$email,PDO::PARAM_STR);
-		$st->bindParam(':pwd',$pwd1,PDO::PARAM_STR);
+		$st->bindParam(':pwd',$pwd,PDO::PARAM_STR);
 		
 		$st->execute();
-
 		$db->commit();
-
+		
+		setcookie('warning','註冊成功！請進行登入');
 		header("Location: /login.php");
+		exit;
 
 	} catch (PDOException $e) {
 		error_log($e->getMessage());

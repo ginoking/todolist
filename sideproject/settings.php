@@ -1,6 +1,9 @@
 <?php  
 require_once "vendor/autoload.php";
 
+session_start();
+
+
 //資料庫連線
 $db_ms = "mysql";
 $db_host = "localhost";
@@ -20,4 +23,6 @@ $loader = new \Twig\Loader\FilesystemLoader('templates/');
 $twig = new \Twig\Environment($loader, []);
 
 
+
+include_once __DIR__.'/lib/lib.php'; // 一些常用的function
 ?>
