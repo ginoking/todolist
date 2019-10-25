@@ -7,8 +7,20 @@ if (!is_login()) {
 	exit;
 }
 
+$user_id = $_SESSION['id'];
+
+$sql = "select * from mission where user_id = :user_id";
+$st = $db ->prepare($sql);
+$st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+$st->execute();
+
+$todolist = $st -> fetchall();
+
+
 echo $twig->render(
-	'index.html', []
+	'index.html', [
+		'todolist' => $todolist,
+	]
 );
 
 ?>

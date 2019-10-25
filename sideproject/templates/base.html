@@ -21,6 +21,16 @@
 				$.removeCookie('warning');
 			}
 		});
+		//代辦事項的修改彈跳視窗內容用js帶進去
+		function showData(id,data){
+			jQuery.each(data, function(i, val){
+				if (val[0] == id) {
+					$('#content').val(val[1]);
+					$('#deadline').val(val[6]);
+					$('#mission_id').val(val[0]);
+				}
+			})
+		}
 	</script>
 </head>
 <body>

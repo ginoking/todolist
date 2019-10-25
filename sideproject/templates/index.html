@@ -2,7 +2,12 @@
 {% block content %}
 <div class="row table-responsive">
 	<div class="col-md-12">
-		<h3 class="text-center">事項列表</h3>
+		<h3 class="text-center">
+			事項列表
+			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="float: right;">
+			  	<i class="fa fa-plus" aria-hidden="true"></i>
+			</button>
+		</h3>
 		<table class="table">
 		  	<thead class="thead-light">
 			    <tr>
@@ -11,30 +16,89 @@
 			      	<th scope="col" class="text-nowrap">新增日期</th>
 			      	<th scope="col" class="text-nowrap">期限</th>
 			      	<th scope="col" class="text-nowrap">完成日期</th>
+			      	<th></th>
+			      	<th></th>
 			    </tr>
 		  	</thead>
 		  	<tbody>
+		  		{% for i in todolist %}
 		    	<tr>
-		      		<th scope="row">未完成</th>
-		      		<td>上完1000個標籤</td>
-		      		<td>2019-10-24</td>
-		      		<td>2019-10-24</td>
+		    		{% if i.is_done == 1%}
+		      		<th scope="row" style="color: #5599FF"><i class="fa fa-check" aria-hidden="true"></i></th>
+		      		{% else %}
+		      		<th scope="row" style="color: #FF8888"><i class="fa fa-times" aria-hidden="true"></i></th>
+		      		{% endif %}
+		      		<td>{{i.content}}</td>
+		      		<td>{{i.create_at}}</td>
+		      		<td>{{i.deadline}}</td>
+		      		{% if i.done_at == ''%}
 		      		<td>尚未完成</td>
+		      		{% else %}
+		      		<td>{{i.done_at}}</td>
+		      		{% endif %}
+		      		<td>
+		      			<button class="btn" data-toggle="modal" data-target="#alterarea" onclick="showData({{i.id}},{{ todolist|json_encode() }})">
+		      				<i class="fa fa-pencil" aria-hidden="true"></i>
+		      			</button>
+		      		</td>
+		      		<td>
+		      			<button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
+		      		</td>
 		    	</tr>
-		    	<tr>
-		      		<th scope="row">2</th>
-		      		<td>Jacob</td>
-				    <td>Thornton</td>
-				    <td>@fat</td>
-		    	</tr>
-		    	<tr>
-			      	<th scope="row">3</th>
-			      	<td>Larry</td>
-			      	<td>the Bird</td>
-			      	<td>@twitter</td>
-		    	</tr>
+		    	{% endfor %}
 		  	</tbody>
 		</table>
+		<!-- 新增 -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h5 class="modal-title" id="exampleModalLabel">新增事項</h5>
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        		</button>
+		      		</div>	
+		      		<form action="add_mission.php" method="post">
+		      			<div class="modal-body">
+		      				<label for="recipient-name" class="col-form-label">事項內容:</label>
+			        		<input type="text" class="form-control" name="content" required="true">
+			        		<label for="recipient-name" class="col-form-label">完成期限:</label>
+			        		<input type="date" class="form-control" name="deadline" required="true">
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+			        		<button type="submit" class="btn btn-primary">送出</button>
+			      		</div>
+		      		</form>
+		    	</div>
+		  	</div>
+		</div>
+		<!-- 修改 -->
+		<div class="modal fade" id="alterarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h5 class="modal-title" id="exampleModalLabel">新增事項</h5>
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        		</button>
+		      		</div>	
+		      		<form action="update_mission.php" method="post">
+		      			<div class="modal-body">
+		      				<label for="recipient-name" class="col-form-label">事項內容:</label>
+			        		<input type="text" id="content" class="form-control" name="content" required="true">
+			        		<label for="recipient-name" class="col-form-label">完成期限:</label>
+			        		<input type="date" id="deadline" class="form-control" name="deadline" required="true">
+			        		<input type="hidden" name="mission_id" id="mission_id" value="">
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+			        		<button type="submit" class="btn btn-primary">修改</button>
+			      		</div>
+		      		</form>
+		    	</div>
+		  	</div>
+		</div>
 	</div>			
 </div>
 {% endblock %}
