@@ -14,12 +14,12 @@ while ($row = $st->fetch()) {
 	if (password_verify($pwd, $row['password'])) {
 		$_SESSION['id'] = $row['id'];
 		setcookie('warning','登入成功！');
-		header("Location: /index.php");
+		header("Location: ./index.php");
 		exit;
 	}
 	else{
 		setcookie('warning','帳號密碼錯誤！');
-		header("Location: /login.php");
+		header("Location: ./login.php");
 		exit;
 	}
 }
