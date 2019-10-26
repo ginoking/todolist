@@ -9,6 +9,12 @@ if (!is_login()) {
 
 $user_id = $_SESSION['id'];
 
+$sql = "select name from user where id = :user_id";
+$st = $db->prepare($sql);
+$st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+$st->execute();
+$user_name = $st->fetch()['name'];
+
 $sql = "select * from mission where user_id = :user_id";
 $st = $db ->prepare($sql);
 $st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
@@ -20,6 +26,7 @@ $todolist = $st -> fetchall();
 echo $twig->render(
 	'index.html', [
 		'todolist' => $todolist,
+		'user_name' => $user_name
 	]
 );
 

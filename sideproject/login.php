@@ -8,7 +8,9 @@ if (is_login()) {
 }
 
 echo $twig->render(
-	'login.html', []
+	'login.html', [
+		'user_name' => ''
+	]
 );
 
 ?>

@@ -2,6 +2,7 @@
 require_once "vendor/autoload.php";
 
 date_default_timezone_set("Asia/Taipei");
+header('content-type:text/html; charset=utf8');
 session_start();
 
 
