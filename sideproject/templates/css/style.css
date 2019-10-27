@@ -1,3 +1,37 @@
 * {
 	/*border: 1px solid;*/
 }
+
+
+input[type=checkbox] {
+	display: none;
+}
+
+
+label[for=check]::before {
+
+	content: '\2610';
+	font-size: 20px;
+	color: #ccc;
+	
+}
+
+input[type=checkbox]:checked + label[for=check]::before {
+	animation: check 1s forwards;
+	content: '\2713';
+	
+}
+
+@keyframes check {
+	0% {
+		content: '\2610';
+	}
+
+	50% {
+		content: '';
+	}
+
+	100% {
+		content: '\2713';
+	}
+}

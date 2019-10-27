@@ -18,15 +18,16 @@
 			      	<th scope="col" class="text-nowrap">完成日期</th>
 			      	<th></th>
 			      	<th></th>
+			      	<th></th>
 			    </tr>
 		  	</thead>
 		  	<tbody>
 		  		{% for i in todolist %}
 		    	<tr>
 		    		{% if i.is_done == 1%}
-		      		<th scope="row" style="color: #5599FF"><i class="fa fa-check" aria-hidden="true"></i></th>
+		      		<th scope="row"><i class="fa fa-check" aria-hidden="true" style="color: #5599FF"></i></th>
 		      		{% else %}
-		      		<th scope="row" style="color: #FF8888"><i class="fa fa-times" aria-hidden="true"></i></th>
+		      		<th scope="row"><i class="fa fa-times" aria-hidden="true"  style="color: #FF8888"></i></th>
 		      		{% endif %}
 		      		<td>{{i.content}}</td>
 		      		<td>{{i.create_at}}</td>
@@ -43,6 +44,10 @@
 		      		</td>
 		      		<td>
 		      			<button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
+		      		</td>
+		      		<td>
+						<input type="checkbox" id="check">
+						<label class="form-check-label" for="check"></label>
 		      		</td>
 		    	</tr>
 		    	{% endfor %}
