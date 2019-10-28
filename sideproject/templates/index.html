@@ -3,10 +3,9 @@
 <div class="row table-responsive">
 	<div class="col-md-12">
 		<h3 class="text-center">
-			事項列表
-			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="float: right;">
+			<!-- <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="float: right;">
 			  	<i class="fa fa-plus" aria-hidden="true"></i>
-			</button>
+			</button> -->
 		</h3>
 		<table class="table">
 		  	<thead class="thead-light">
@@ -17,8 +16,11 @@
 			      	<th scope="col" class="text-nowrap">期限</th>
 			      	<th scope="col" class="text-nowrap">完成日期</th>
 			      	<th></th>
-			      	<th></th>
-			      	<th></th>
+			      	<th>
+			      		<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="float: right;">
+						  	<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+			      	</th>
 			    </tr>
 		  	</thead>
 		  	<tbody>
@@ -26,8 +28,10 @@
 		    	<tr>
 		    		{% if i.is_done == 1%}
 		      		<th scope="row"><i class="fa fa-check" aria-hidden="true" style="color: #5599FF"></i></th>
+		      		{% elseif i.is_done == 0 %}
+		      		<th scope="row"><i class="fa fa-spinner" aria-hidden="true"></i></th>
 		      		{% else %}
-		      		<th scope="row"><i class="fa fa-times" aria-hidden="true"  style="color: #FF8888"></i></th>
+		      		<th scope="row"><i class="fa fa-times" aria-hidden="true"  style="color: #FF8888"></i></th>	
 		      		{% endif %}
 		      		<td>{{i.content}}</td>
 		      		<td>{{i.create_at}}</td>
@@ -43,11 +47,7 @@
 		      			</button>
 		      		</td>
 		      		<td>
-		      			<button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		      		</td>
-		      		<td>
-						<input type="checkbox" id="check">
-						<label class="form-check-label" for="check"></label>
+		      			<a href="delete_mission.php?id={{i.id}}" onclick="return confirm('確定刪除？')"><button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
 		      		</td>
 		    	</tr>
 		    	{% endfor %}
@@ -97,6 +97,10 @@
 			        		<input type="hidden" name="mission_id" id="mission_id" value="">
 			      		</div>
 			      		<div class="modal-footer">
+			      			<div class="check">
+			      				<input type="checkbox" id="check" class="form-check-input" name="check">
+								<label class="form-check-label" for="check">任務完成</label>
+			      			</div>
 			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 			        		<button type="submit" class="btn btn-primary">修改</button>
 			      		</div>
@@ -104,6 +108,11 @@
 		    	</div>
 		  	</div>
 		</div>
+	</div>
+	<div class="col-md-12">
+		<button type="button" class="btn btn-outline-primary">已完成</button>
+		<button type="button" class="btn btn-outline-dark">進行中</button>
+		<button type="button" class="btn btn-outline-danger">已逾期</button>
 	</div>			
 </div>
 {% endblock %}

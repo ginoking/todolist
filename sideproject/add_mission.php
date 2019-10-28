@@ -12,6 +12,12 @@ if ($content == '' || $deadline == '') {
 	exit;
 }
 
+if ($deadline < $create_at) {
+	setcookie('warning','時間已經過囉！');
+	header('Location: ./index.php');
+	exit;
+}
+
 try {
 
 	$db->beginTransaction();
