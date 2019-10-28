@@ -1,3 +1,64 @@
 {% extends 'base.html'%}
 {% block content %}
+<div class="row center">
+	<div class="col-md-10 center">
+		<div class="col-md-4">
+			<div class="card-container manual-flip">
+				<div class="card">
+					<div class="front">
+						<div class="cover">
+							<img src="templates/images/rotating_card_thumb2.png">
+						</div>
+						<div class="user">
+							<img src="templates/images/rotating_card_profile3.png" class="img-circle">
+						</div>
+						<div class="content">
+							<div class="main">
+								<h3 class="name">gino king</h3>
+								<p class="profession">web developer</p>
+								<p class="text-cenetr">
+									一個剛畢業的社會新鮮人，正在努力學習與精進自己的web技術。並且學習更多關於python與ai相關知識
+								</p>
+							</div>
+							<div class="footer">
+								<button class="btn btn-simple" onclick="rotateCard(this)">
+                                    <i class="fa fa-mail-forward"></i> 翻面
+                                </button>
+							</div>
+						</div>
+					</div>
+					<div class="back">
+						<div class="header">
+							<h5 class="motto">
+								"選你所愛，愛你所選"
+							</h5>
+						</div>
+						<div class="content">
+							<div class="main">
+								<h4 class="text-center">
+									Job Description
+								</h4>
+								<p>
+									奇加互動測試工程師:進行壓力測試、效能測試、滲透測試、原始碼掃描<br>
+									php後端工程師:利用twig、nginx、mysql進行網頁程式撰寫
+								</p>
+							</div>
+							
+						</div>
+						<div class="footer">
+							<button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+							<div class="social-links" style="float: right;">
+								<a href="https://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="https://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="https://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
