@@ -9,11 +9,11 @@ if (!is_login()) {
 $time = date("Y-m-d");
 $user_id = $_SESSION['id'];
 
-$sql = "select name from user where id = :user_id";
+$sql = "select c_name from user where id = :user_id";
 $st = $db->prepare($sql);
 $st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 $st->execute();
-$user_name = $st->fetch()['name'];
+$user_name = $st->fetch()['c_name'];
 
 //更新狀態
 if (!isset($_COOKIE['update'])) {

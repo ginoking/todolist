@@ -1,5 +1,6 @@
 * {
-	font-family: 微軟正黑體
+	font-family: 微軟正黑體;
+    /*border: 1px solid ;*/
 }
 
 
@@ -66,7 +67,7 @@
 /*          rotate_profile          */
 .card-container, .front, .back {
     width: 100%;
-    height: 420px;
+    height: 430px;
     border-radius: 4px;
 }
 .card {
@@ -107,8 +108,20 @@
     font-size: 12px;
     line-height: 25px;
 }
+.card .content .main textarea {
+    width: 100%;
+    height: 90px;
+    border: 0;
+    resize: none;
+    background-color: #e9ecef73;
+    border-radius: 10px;
+    padding: 10px 0
+}
 .card .back .content .main {
     height: 215px;
+}
+.card .back .content .main textarea{
+    height: 195px;
 }
 .card .name {
     font-size: 22px;
@@ -116,6 +129,7 @@
     margin: 10px 0 0 ;
     text-align: center;
     text-transform: capitalize;
+    border: 0;
 }
 .card .name input{
     display: inline-block;
@@ -133,23 +147,27 @@
 }
 
 .card .profession {
+    width: 100%;
     color: #999;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    font-size: 12px;
+    border: 0;
 }
 .card .footer {
     border-top: 1px solid #eee;
     color: #999;
-    margin: 30px 0 0 ;
+    margin: 20px 0 10px ;
     padding: 10px 0 0 ;
     text-align: center;
 }
 
 .card .footer .social-links {
     font-size: 18px;
+    margin-bottom: 10px;
 }
 .card .footer .social-links a{
-    margin: 0 0
+    color: #b8b8b8;
 }
 .card .footer .btn-simple {
     margin-top: -6px;
@@ -159,6 +177,8 @@
     height: 90px;
 }  
 .card .motto {
+    width: 100%;
+    border: 0;
     border-bottom: 1px solid #eee;
     color: #999;
     font-size: 16px;
@@ -213,11 +233,11 @@
         z-index: 3;
 }
 
-.back .btn-simple{
+/*.back .btn-simple{
     position: absolute;
     left: 0;
     bottom: 4px;
-}
+}*/
 
 /*          rotate_profile          */
 

@@ -6,23 +6,65 @@
 		<form class="text-center border border-light p-5" action="register1.php" method="post">
 
 		    <p class="h4 mb-4">註冊囉</p>
-
-		    <div class="form-row mb-4">
-		        <div class="col">
-		            <!-- First name -->
-		            <input type="text" name="name" class="form-control" placeholder="姓名">
-		        </div>
+		    <!-- E-mail -->
+		    <div class="form-row">
+		    	<div class="form-group col-md-12">
+		    		<div class="col">
+		    			<input type="email" name="email" class="form-control" placeholder="E-mail">
+		    		</div>
+		    	</div>
 		    </div>
 
-		    <!-- E-mail -->
-		    <input type="email" name="email" class="form-control mb-4" placeholder="E-mail">
+		    <div class="form-row">
+		    	<div class="form-group  col-md-6">
+			        <div class="col">
+			            <!-- First name -->
+			            <input type="text" name="c_name" class="form-control" placeholder="中文姓名">
+			        </div>
+			    </div>
+			    <div class="form-group  col-md-6">
+			        <div class="col">
+			            <!-- First name -->
+			            <input type="text" name="e_name" class="form-control" placeholder="英文姓名">
+			        </div>
+			    </div>
+		    </div>
+
+		    
+		    
+		    <div class="form-row">
+		    	<div class="form-group  col-md-6">
+			        <div class="col">
+			            <!-- First name -->
+			            <input type="text" name="job_title" class="form-control" placeholder="工作職稱">
+			        </div>
+			    </div>
+			    <div class="form-group  col-md-6">
+			        <div class="col">
+			            <!-- First name -->
+			            <input type="text" name="motto" class="form-control" placeholder="座右銘">
+			        </div>
+			    </div>
+		    </div>
 
 		    <!-- Password -->
-		    <input type="password" name="pwd" class="form-control" placeholder="密碼" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-		    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-		        At least 8 characters and 1 digit
-		    </small>
-		    <input type="password" name="pwd2" class="form-control" placeholder="確認密碼" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+		    <div class="form-row">
+		    	<div class="form-group col-md-6">
+		    		<div class="col">
+		    			<input type="password" name="pwd" class="form-control" placeholder="密碼" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+			    		<small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+					        At least 8 characters and 1 digit
+					    </small>
+		    		</div>
+		    	</div>
+		    	<div class="form-group col-md-6">
+		    		<div class="col">
+		    			<input type="password" name="pwd2" class="form-control" placeholder="確認密碼" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+		    		</div>
+		    	</div>
+		    </div>
+		    
+		    
 
 		    <!-- Sign up button -->
 		    <button class="btn btn-dark my-4 btn-block" type="submit">註冊</button>

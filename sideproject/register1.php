@@ -1,6 +1,9 @@
 <?php  
 include_once __DIR__ . '/settings.php';
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$c_name = filter_input(INPUT_POST, 'c_name', FILTER_SANITIZE_STRING);
+$e_name = filter_input(INPUT_POST, 'e_name', FILTER_SANITIZE_STRING);
+$job_title = filter_input(INPUT_POST, 'job_title', FILTER_SANITIZE_STRING);
+$motto = filter_input(INPUT_POST, 'motto', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $pwd1 = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_MAGIC_QUOTES);
 $pwd2 = filter_input(INPUT_POST, 'pwd2', FILTER_SANITIZE_MAGIC_QUOTES);
@@ -27,11 +30,14 @@ if ($exist == 0) {
 		//密碼加密
 		$pwd = password_hash($pwd1, PASSWORD_DEFAULT);
 
-		$sql = "insert into user (name,email,password) values (:name, :email, :pwd)";
+		$sql = "insert into user (c_name,e_name,email,password,motto,job_title) values (:c_name, :e_name, :email, :pwd, :motto, :job_title)";
 		$st = $db->prepare($sql);
-		$st->bindParam(':name',$name,PDO::PARAM_STR);
+		$st->bindParam(':c_name',$c_name,PDO::PARAM_STR);
+		$st->bindParam(':e_name',$e_name,PDO::PARAM_STR);
 		$st->bindParam(':email',$email,PDO::PARAM_STR);
 		$st->bindParam(':pwd',$pwd,PDO::PARAM_STR);
+		$st->bindParam(':motto',$motto,PDO::PARAM_STR);
+		$st->bindParam(':job_title',$job_title,PDO::PARAM_STR);
 		
 		$st->execute();
 		$db->commit();
