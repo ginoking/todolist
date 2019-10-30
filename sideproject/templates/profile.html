@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row center">
 	<div class="col-md-10 center">
-		<div class="col-md-4">
+		<div class="col-md-4 card-width">
 			<div class="card-container manual-flip">
 				<div class="card">
 				<form action="update_profile.php" method="post" id="profile">
@@ -17,7 +17,7 @@
 							<div class="main">
 								<input type="text" name="e_name" class="name" value="{{e_name}}">
 								<input type="text" name="job_title" value="{{job_title}}" class="profession">
-								<textarea class="description text-center">123</textarea>
+								<textarea class="description text-center" name="des">{{des}}</textarea>
 							</div>
 							<div class="footer">
 								<button type="button" class="btn btn-simple" onclick="rotateCard(this)">
@@ -28,14 +28,13 @@
 					</div>
 					<div class="back">
 						<div class="header">
-							<input type="text" name="motto" class="motto" value='"{{motto}}"'>
+							<input type="text" name="motto" class="motto" value='{{motto}}'>
 						</div>
 						<div class="content">
 							<div class="main">
-								<h4 class="text-center">
-									Job Description
-								</h4>
-								<textarea class="description text-center">123</textarea>
+								<input type="text" name="c_name" value="{{user_name}}" class="name">
+								<p class="profession">job description</p>
+								<textarea class="description text-center" name="job_des">{{job_des}}</textarea>
 							</div>
 							<div class="footer">
 								<div class="social-links">

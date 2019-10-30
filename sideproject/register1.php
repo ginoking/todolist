@@ -30,7 +30,7 @@ if ($exist == 0) {
 		//密碼加密
 		$pwd = password_hash($pwd1, PASSWORD_DEFAULT);
 
-		$sql = "insert into user (c_name,e_name,email,password,motto,job_title) values (:c_name, :e_name, :email, :pwd, :motto, :job_title)";
+		$sql = "insert into user (c_name,e_name,email,password,motto,job_title) values (:c_name, :e_name, :email, :pwd, ':motto', :job_title)";
 		$st = $db->prepare($sql);
 		$st->bindParam(':c_name',$c_name,PDO::PARAM_STR);
 		$st->bindParam(':e_name',$e_name,PDO::PARAM_STR);

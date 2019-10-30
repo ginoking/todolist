@@ -17,6 +17,8 @@ while ($row = $st->fetch()) {
 	$e_name = $row['e_name'];
 	$job_title = $row['job_title'];
 	$motto = $row['motto'];
+	$des = $row['description'];
+	$job_des = $row['job_description'];
 }
 
 
@@ -27,7 +29,9 @@ echo $twig->render(
 		'user_name' => $user_name,
 		'e_name' => $e_name,
 		'motto' => $motto,
-		'job_title' => $job_title
+		'job_title' => $job_title,
+		'des' => $des,
+		'job_des' => $job_des
 	]
 );
 
