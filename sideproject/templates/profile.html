@@ -5,13 +5,13 @@
 		<div class="col-md-4 card-width">
 			<div class="card-container manual-flip">
 				<div class="card">
-				<form action="update_profile.php" method="post" id="profile">
+				<form action="update_profile.php" method="post" id="profile" enctype="multipart/form-data">
 					<div class="front">
 						<div class="cover">
 							<img src="templates/images/rotating_card_thumb2.png">
 						</div>
 						<div class="user">
-							<img src="templates/images/rotating_card_profile3.png" class="img-circle">
+							<img src="{{sticker}}" class="img-circle" width="100%">
 						</div>
 						<div class="content">
 							<div class="main">
@@ -46,10 +46,32 @@
 							</div>
 						</div>
 					</div>
-				</form>
 				</div>
 			</div>
+			<input type="file" name="img" class="uploadFile">
+			</form>
 		</div>
 	</div>
 </div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+
+	$(document).on("change",'.uploadFile', function(){
+		var uploadFile = $(this);
+		console.log(uploadFile);
+		var files = !!this.files ? this.files : [];
+		console.log(files)
+		if (!files.length || !window.FileReader) return;
+
+		if (/^image/.test(files[0].type)) {
+			var reader = new FileReader();
+			reader.readAsDataURL(files[0]);
+			reader.onloadend = function(){
+				$('.img-circle').attr("src",this.result);
+			}
+		}
+	})
+
+</script>
 {% endblock %}

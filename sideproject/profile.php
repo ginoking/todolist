@@ -19,6 +19,7 @@ while ($row = $st->fetch()) {
 	$motto = $row['motto'];
 	$des = $row['description'];
 	$job_des = $row['job_description'];
+	$sticker = $row['sticker'];
 }
 
 
@@ -31,7 +32,8 @@ echo $twig->render(
 		'motto' => $motto,
 		'job_title' => $job_title,
 		'des' => $des,
-		'job_des' => $job_des
+		'job_des' => $job_des,
+		'sticker' => $sticker,
 	]
 );
 

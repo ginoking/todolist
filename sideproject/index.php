@@ -15,7 +15,33 @@ $st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 $st->execute();
 $user_name = $st->fetch()['c_name'];
 
-$sql = "select * from mission where user_id = :user_id";
+//更新狀態
+if (!isset($_COOKIE['update'])) {
+	$sql = "update mission set is_done = 99, done_at = '逾期' where deadline < :time and is_done = '0'";
+	$st = $db->prepare($sql);
+	$st -> bindParam(':time',$time,PDO::PARAM_STR);
+	$st -> execute();
+
+	setcookie('update', true, time()+86400);
+}
+
+
+$status = filter_input(INPUT_GET, 'status');
+
+//如果null也會被判定為0，所以用兩個去判斷
+if (isset($status) && $status == 0) {
+	$sql = "select * from mission where user_id = :user_id and is_done = 0 ";
+}
+elseif ($status == 1) {
+	$sql = "select * from mission where user_id = :user_id and is_done = 1 ";
+}
+elseif ($status == 99 ) {
+	$sql = "select * from mission where user_id = :user_id and is_done = 99 ";
+}
+else{
+	$sql = "select * from mission where user_id = :user_id";
+}
+
 $st = $db ->prepare($sql);
 $st->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 $st->execute();
