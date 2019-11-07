@@ -19,14 +19,21 @@ $job_des = filter_input(INPUT_POST, 'job_des');
 if(is_uploaded_file($_FILES['img']['tmp_name'])) {
 	$sourcePath = $_FILES['img']['tmp_name'];
 	$targetPath1 = "templates/images/".$_FILES['img']['name'];		
-	move_uploaded_file($sourcePath,$targetPath);
+	echo move_uploaded_file($sourcePath,$targetPath1);
+}
+else{
+	$targetPath1 = filter_input(INPUT_POST, 'sticker_path');
 }
 
 if(is_uploaded_file($_FILES['bg_img']['tmp_name'])) {
 	$sourcePath = $_FILES['bg_img']['tmp_name'];
 	$targetPath2 = "templates/images/".$_FILES['bg_img']['name'];		
-	move_uploaded_file($sourcePath,$targetPath);
+	move_uploaded_file($sourcePath,$targetPath2);
 }
+else{
+	$targetPath2 = filter_input(INPUT_POST, 'bg_path');
+}
+
 
 try {
 	$db->beginTransaction();
