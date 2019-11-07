@@ -8,7 +8,7 @@
 				<form action="update_profile.php" method="post" id="profile" enctype="multipart/form-data">
 					<div class="front">
 						<div class="cover">
-							<img src="templates/images/rotating_card_thumb2.png">
+							<img src="{{bg_img}}" class="img_bg">
 						</div>
 						<div class="user">
 							<img src="{{sticker}}" class="img-circle" width="100%">
@@ -48,7 +48,14 @@
 					</div>
 				</div>
 			</div>
-			<input type="file" name="img" class="uploadFile">
+			<div class="row" style="padding: 0 15px;">
+				<label class="input_file">上傳頭像
+					<input type="file" name="img" class="uploadFile" style="display: none;">
+				</label>
+				<label class="input_file">上傳背景圖
+					<input type="file" name="bg_img" class="uploadFile" style="display: none;">
+				</label>
+			</div>
 			</form>
 		</div>
 	</div>
@@ -59,16 +66,21 @@
 
 	$(document).on("change",'.uploadFile', function(){
 		var uploadFile = $(this);
-		console.log(uploadFile);
+		var name = uploadFile[0].name;
+		if (name == 'img') {
+			var class_name = '.img-circle';
+		}
+		else{
+			var class_name = '.img_bg';
+		}
 		var files = !!this.files ? this.files : [];
-		console.log(files)
 		if (!files.length || !window.FileReader) return;
 
 		if (/^image/.test(files[0].type)) {
 			var reader = new FileReader();
 			reader.readAsDataURL(files[0]);
 			reader.onloadend = function(){
-				$('.img-circle').attr("src",this.result);
+				$(class_name).attr("src",this.result);
 			}
 		}
 	})

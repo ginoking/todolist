@@ -20,6 +20,7 @@ while ($row = $st->fetch()) {
 	$des = $row['description'];
 	$job_des = $row['job_description'];
 	$sticker = $row['sticker'];
+	$bg_img = $row['bg_img'];
 }
 
 
@@ -34,6 +35,7 @@ echo $twig->render(
 		'des' => $des,
 		'job_des' => $job_des,
 		'sticker' => $sticker,
+		'bg_img' => $bg_img,
 	]
 );
 

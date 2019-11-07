@@ -18,14 +18,20 @@ $job_des = filter_input(INPUT_POST, 'job_des');
 
 if(is_uploaded_file($_FILES['img']['tmp_name'])) {
 	$sourcePath = $_FILES['img']['tmp_name'];
-	$targetPath = "templates/images/".$_FILES['img']['name'];		
+	$targetPath1 = "templates/images/".$_FILES['img']['name'];		
+	move_uploaded_file($sourcePath,$targetPath);
+}
+
+if(is_uploaded_file($_FILES['bg_img']['tmp_name'])) {
+	$sourcePath = $_FILES['bg_img']['tmp_name'];
+	$targetPath2 = "templates/images/".$_FILES['bg_img']['name'];		
 	move_uploaded_file($sourcePath,$targetPath);
 }
 
 try {
 	$db->beginTransaction();
 
-	$sql = "update user set c_name= :c_name,e_name = :e_name,job_title = :job_title,motto = :motto, description = :des, job_description = :job_des, sticker = :sticker where id = :id";
+	$sql = "update user set c_name= :c_name,e_name = :e_name,job_title = :job_title,motto = :motto, description = :des, job_description = :job_des, sticker = :sticker, bg_img = :bg_img where id = :id";
 	$st = $db->prepare($sql);
 	$st->bindParam(':c_name',$c_name,PDO::PARAM_STR);
 	$st->bindParam(':e_name',$e_name,PDO::PARAM_STR);
@@ -33,7 +39,8 @@ try {
 	$st->bindParam(':job_des',$job_des,PDO::PARAM_STR);
 	$st->bindParam(':motto',$motto,PDO::PARAM_STR);
 	$st->bindParam(':job_title',$job_title,PDO::PARAM_STR);
-	$st->bindParam(':sticker',$targetPath,PDO::PARAM_STR);
+	$st->bindParam(':sticker',$targetPath1,PDO::PARAM_STR);
+	$st->bindParam(':bg_img',$targetPath2,PDO::PARAM_STR);
 	$st->bindParam(':id',$user_id,PDO::PARAM_STR);
 
 
