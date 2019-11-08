@@ -8,10 +8,18 @@
 				<form action="update_profile.php" method="post" id="profile" enctype="multipart/form-data">
 					<div class="front">
 						<div class="cover">
+							{% if bg_img %}							
 							<img src="{{bg_img}}" class="img_bg">
+							{% else %}
+							<img src="templates/images/FotoJet.png" class="img_bg" width="100%">
+							{% endif %}
 						</div>
 						<div class="user">
+							{% if sticker %}
 							<img src="{{sticker}}" class="img-circle" width="100%">
+							{% else %}
+							<img src="templates/images/avatar.png" class="img-circle" width="100%">
+							{% endif %}
 						</div>
 						<div class="content">
 							<div class="main">
@@ -75,6 +83,7 @@
 		else{
 			var class_name = '.img_bg';
 		}
+		console.log(class_name);
 		var files = !!this.files ? this.files : [];
 		if (!files.length || !window.FileReader) return;
 

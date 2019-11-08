@@ -24,8 +24,6 @@ while ($row = $st->fetch()) {
 }
 
 
-
-
 echo $twig->render(
 	'profile.html', [
 		'user_name' => $user_name,
