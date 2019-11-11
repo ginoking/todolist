@@ -15,6 +15,12 @@ if ($pwd1 != $pwd2) {
 	exit;
 }
 
+if (!strong_password($pwd1)) {
+	setcookie('warning','密碼太弱拉~');
+	header("Location: ./register.php");
+	exit;
+}
+
 //判斷email是否存在
 
 $sql = "select * from user where email = :email";
