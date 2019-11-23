@@ -17,6 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="templates/css/bootstrap-select.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="templates/js/bootstrap-select.js"></script>
+	<!-- flatpickr -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<!-- animate.css -->
 	<link rel="stylesheet" type="text/css" href="templates/css/animate.css">
 	<script type="text/javascript">
@@ -28,16 +31,6 @@
 				$.removeCookie('warning');
 			}
 		});
-		
-		function rotateCard(btn){
-        var $card = $(btn).closest('.card-container');
-        console.log($card);
-        if($card.hasClass('hover')){
-            $card.removeClass('hover');
-        } else {
-            $card.addClass('hover');
-        }
-    }
 	</script>
 </head>
 <body>
