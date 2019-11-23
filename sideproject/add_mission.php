@@ -3,6 +3,7 @@ include_once __DIR__ . '/settings.php';
 
 $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
 $deadline = filter_input(INPUT_POST, 'deadline');
+$priority = filter_input(INPUT_POST, 'priority');
 $create_at = date("Y-m-d");
 $user_id = $_SESSION['id'];
 
@@ -22,10 +23,11 @@ try {
 
 	$db->beginTransaction();
 
-	$sql = "insert into mission(content,user_id,is_done,create_at, deadline) values(:content, :user_id, 0, :create_at, :deadline)";
+	$sql = "insert into mission(content, user_id, priority,is_done ,create_at ,deadline) values(:content, :user_id, :priority, 0, :create_at, :deadline)";
 	$st = $db->prepare($sql);
 	$st->bindParam(':content',$content,PDO::PARAM_STR);
 	$st->bindParam(':user_id',$user_id,PDO::PARAM_STR);
+	$st->bindParam(':priority',$priority,PDO::PARAM_STR);
 	$st->bindParam(':create_at',$create_at,PDO::PARAM_STR);
 	$st->bindParam(':deadline',$deadline,PDO::PARAM_STR);
 

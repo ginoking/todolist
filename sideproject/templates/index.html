@@ -12,6 +12,7 @@
 			    <tr>
 			      	<th scope="col" class="text-nowrap">狀態</th>
 			      	<th scope="col" class="text-nowrap">內容</th>
+			      	<th scope="col" class="text-nowrap">優先順序</th>
 			      	<th scope="col" class="text-nowrap">新增日期</th>
 			      	<th scope="col" class="text-nowrap">期限</th>
 			      	<th scope="col" class="text-nowrap">完成日期</th>
@@ -34,6 +35,7 @@
 		      		<th scope="row"><i class="fa fa-times" aria-hidden="true"  style="color: #FF8888"></i></th>	
 		      		{% endif %}
 		      		<td>{{i.content}}</td>
+		      		<td>{{i.name}}</td>
 		      		<td>{{i.create_at}}</td>
 		      		<td>{{i.deadline}}</td>
 		      		{% if i.is_done == 0%}
@@ -71,6 +73,12 @@
 			        		<input type="text" class="form-control" name="content" required="true">
 			        		<label for="recipient-name" class="col-form-label">完成期限:</label>
 			        		<input type="date" class="form-control" name="deadline" required="true">
+			        		<label class="col-form-label">優先順序:</label>
+			        		<select class="selectpicker" data-width="100%" name="priority">
+			        			{% for i in priority %}
+			        			<option value="{{i.id}}">{{i.name}}</option>
+			        			{% endfor %}
+			        		</select>
 			      		</div>
 			      		<div class="modal-footer">
 			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
@@ -85,7 +93,7 @@
 		  	<div class="modal-dialog" role="document">
 		    	<div class="modal-content">
 		      		<div class="modal-header">
-		        		<h5 class="modal-title" id="exampleModalLabel">新增事項</h5>
+		        		<h5 class="modal-title" id="exampleModalLabel">事項內容</h5>
 		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          		<span aria-hidden="true">&times;</span>
 		        		</button>
@@ -97,6 +105,12 @@
 			        		<label for="recipient-name" class="col-form-label">完成期限:</label>
 			        		<input type="date" id="deadline" class="form-control" name="deadline" required="true">
 			        		<input type="hidden" name="mission_id" id="mission_id" value="">
+			        		<label class="col-form-label">優先順序:</label>
+			        		<select class="selectpicker" data-width="100%" name="priority">
+			        			{% for i in priority %}
+			        			<option value="{{i.id}}">{{i.name}}</option>
+			        			{% endfor %}
+			        		</select>
 			      		</div>
 			      		<div class="modal-footer">
 			      			<div class="check">
@@ -115,6 +129,44 @@
 		<a href="index.php?status=1"><button type="button" class="btn btn-outline-primary">已完成</button></a>
 		<a href="index.php?status=0"><button type="button" class="btn btn-outline-dark">進行中</button></a>
 		<a href="index.php?status=99"><button type="button" class="btn btn-outline-danger">已逾期</button></a>
+		<a href="index.php?priority=1"><button type="button" class="btn btn-outline-warning">最優先</button></a>
+		<a href="index.php?priority=2"><button type="button" class="btn btn-outline-success">優先</button></a>
+		<a href="index.php?priority=3"><button type="button" class="btn btn-outline-info">一般</button></a>
 	</div>			
 </div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".selectpicker").selectpicker();
+	})
+	//代辦事項的修改彈跳視窗內容用js帶進去
+	function showData(id,data){
+		jQuery.each(data, function(i, val){
+			if (val[0] == id) {
+				$('#content').val(val[1]);
+				$('#deadline').val(val[7]);
+				$('#mission_id').val(val[0]);
+				if (val[4] == '1' || val[4] == '2') {
+					$('.check').css('display','none');
+				}
+				else{
+					$('.check').css('display','inline-block');
+				}
+				if (val[3] == '1') {
+					$('.selectpicker').val('1');
+					$('.selectpicker').selectpicker('render');
+				}
+				else if(val[3] == '2'){
+					$('.selectpicker').val('2');
+					$('.selectpicker').selectpicker('render');
+				}
+				else{
+					$('.selectpicker').val('3');
+					$('.selectpicker').selectpicker('render');
+				}
+			}
+		})
+	}
+</script>
 {% endblock %}
