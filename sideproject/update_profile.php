@@ -18,7 +18,7 @@ $job_des = filter_input(INPUT_POST, 'job_des');
 
 if(is_uploaded_file($_FILES['img']['tmp_name'])) {
 	$sourcePath = $_FILES['img']['tmp_name'];
-	$targetPath1 = "templates/images/".$_FILES['img']['name'];		
+	$targetPath1 = "images/".$_FILES['img']['name'];		
 	echo move_uploaded_file($sourcePath,$targetPath1);
 }
 else{
@@ -27,7 +27,7 @@ else{
 
 if(is_uploaded_file($_FILES['bg_img']['tmp_name'])) {
 	$sourcePath = $_FILES['bg_img']['tmp_name'];
-	$targetPath2 = "templates/images/".$_FILES['bg_img']['name'];		
+	$targetPath2 = "images/".$_FILES['bg_img']['name'];		
 	move_uploaded_file($sourcePath,$targetPath2);
 }
 else{
