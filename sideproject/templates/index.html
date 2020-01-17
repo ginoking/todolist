@@ -51,7 +51,7 @@
 		      			</button>
 		      		</td>
 		      		<td>
-		      			<a href="delete_mission.php?id={{i.id}}" onclick="return confirm('確定刪除？')"><button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
+		      			<a href="mission_delete.php?id={{i.id}}" onclick="return confirm('確定刪除？')"><button class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
 		      		</td>
 		    	</tr>
 		    	{% endfor %}
@@ -67,7 +67,7 @@
 		          		<span aria-hidden="true">&times;</span>
 		        		</button>
 		      		</div>	
-		      		<form action="add_mission.php" method="post">
+		      		<form action="mission_add.php" method="post">
 		      			<div class="modal-body">
 		      				<label for="recipient-name" class="col-form-label">事項內容:</label>
 			        		<input type="text" class="form-control" name="content" required="true">
@@ -98,7 +98,7 @@
 		          		<span aria-hidden="true">&times;</span>
 		        		</button>
 		      		</div>	
-		      		<form action="update_mission.php" method="post">
+		      		<form action="mission_update.php" method="post">
 		      			<div class="modal-body">
 		      				<label for="recipient-name" class="col-form-label">事項內容:</label>
 			        		<input type="text" id="content" class="form-control" name="content" required="true">
