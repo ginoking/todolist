@@ -6,6 +6,7 @@ if (!is_login()) {
 	header('Location: ./login.php');
 	exit;
 }
+
 $time = date("Y-m-d");
 $user_id = $_SESSION['id'];
 
@@ -73,6 +74,7 @@ while ($row = $st -> fetch()) {
 echo $twig->render(
 	'index.html', [
 		'todolist' => $todolist,
+		'user_id' => $user_id,
 		'user_name' => $user_name,
 		'priority' => $priority,
 	]
