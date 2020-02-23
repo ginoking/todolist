@@ -23,6 +23,9 @@ while ($row = $st->fetch()) {
 	$bg_img = $row['bg_img'];
 }
 
+$message = $_SESSION['message'];
+$_SESSION['message'] = '';
+
 
 echo $twig->render(
 	'profile.html', [
@@ -35,6 +38,7 @@ echo $twig->render(
 		'job_des' => $job_des,
 		'sticker' => $sticker,
 		'bg_img' => $bg_img,
+		'message' => $message,
 	]
 );
 

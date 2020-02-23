@@ -8,13 +8,13 @@ $create_at = date("Y-m-d");
 $user_id = $_SESSION['id'];
 
 if ($content == '' || $deadline == '') {
-	setcookie('warning','要輸入資料喔！');
+	$_SESSION['message'] = '要輸入資料喔！';
 	header('Location: ./index.php');
 	exit;
 }
 
 if ($deadline < $create_at) {
-	setcookie('warning','時間已經過囉！');
+	$_SESSION['message'] = '時間已經過囉！';
 	header('Location: ./index.php');
 	exit;
 }
@@ -33,8 +33,8 @@ try {
 
 	$st->execute();
 	$db->commit();
-
-	setcookie('warning','事項新增成功！');
+	
+	$_SESSION['message'] = '事項新增成功！';
 	header('Location: ./index.php');
 
 

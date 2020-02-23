@@ -27,5 +27,16 @@ function strong_password($pwd){
 }
 
 
+function encryptDecrypt($string, $decrypt){  
+    if($decrypt){   
+        $decrypted = openssl_decrypt($string, 'DES-ECB', 'gino_king');
+        return $decrypted;   
+    }else{   
+        $encrypted = openssl_encrypt($string, 'DES-ECB', 'gino_king');   
+        return $encrypted;   
+    }   
+}  
+
+
 
 ?>

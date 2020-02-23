@@ -8,14 +8,14 @@ try {
 	$st->bindParam(':id', $id, PDO::PARAM_STR);
 	$st->execute();
 
-	setcookie('warning','刪除成功！');
+	$_SESSION['message'] = '刪除成功！';
 	header("Location: ./index.php");
 	exit;
 
 	
 } catch (PDOException $e) {
 	error_log($e->getMessage());
-		exit();	
+	exit();	
 }
 
 ?>	

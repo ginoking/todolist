@@ -69,6 +69,9 @@ while ($row = $st -> fetch()) {
 	];
 }
 
+$message = $_SESSION['message'];
+$_SESSION['message'] = '';
+
 
 
 echo $twig->render(
@@ -77,6 +80,7 @@ echo $twig->render(
 		'user_id' => $user_id,
 		'user_name' => $user_name,
 		'priority' => $priority,
+		'message' => $message,
 	]
 );
 

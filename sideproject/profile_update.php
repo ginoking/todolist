@@ -54,7 +54,7 @@ try {
 	$st->execute();
 	$db->commit();
 
-	setcookie('warning','儲存成功');
+	$_SESSION['message'] = '儲存成功';
 	header("Location: ./profile.php");
 	exit;
 

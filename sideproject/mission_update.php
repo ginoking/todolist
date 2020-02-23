@@ -10,7 +10,7 @@ $done_at = date("Y-m-d");
 
 
 if($content == '' || $deadline == ''){
-	setcookie('warning','要輸入資料喔！');
+	$_SESSION['message'] = '要輸入資料喔！';
 	header("Location: ./index.php");
 	exit;
 }
@@ -32,7 +32,7 @@ try {
 		$st->bindParam(':mission_id',$mission_id,PDO::PARAM_STR);
 		$st->execute();
 		$db->commit();
-		setcookie('warning','事項完成');
+		$_SESSION['message'] = '事項完成';
 		header("Location: ./index.php");
 		exit;
 
@@ -46,7 +46,9 @@ try {
 		$st->bindParam(':mission_id',$mission_id,PDO::PARAM_STR);
 		$st->execute();
 		$db->commit();
-		setcookie('warning','更新成功');
+
+		
+		$_SESSION['message'] = '更新成功';
 		header("Location: ./index.php");
 		exit;
 	}

@@ -22,21 +22,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<!-- animate.css -->
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<script type="text/javascript">
-		//警告訊息
-		$(function(){
-			var warning = $.cookie('warning');
-			if (warning != null) {
-				alert(warning);
-				$.removeCookie('warning');
-			}
-		});
-	</script>
 </head>
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     		<a class="navbar-brand" href="index.php">待辦事項</a>
+    		{% if message != '' %}
+    		<div class="alert alert-light" role="alert">
+			  	<strong class="mx-2">{{message}}</strong>
+			  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+    		{% endif %}
     		<ul class="navbar-nav ml-auto">
 			    <li class="nav-item dropdown">
 			    	{% if user_id != ''%}

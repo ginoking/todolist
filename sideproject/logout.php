@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/settings.php';
 unset($_SESSION['id']);
-setcookie('warning','成功登出');
+$_SESSION['message'] = '登出成功!';
 header('Location: ./login.php');
 
 

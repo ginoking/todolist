@@ -10,13 +10,13 @@ $pwd2 = filter_input(INPUT_POST, 'pwd2', FILTER_SANITIZE_MAGIC_QUOTES);
 
 
 if ($pwd1 != $pwd2) {
-	setcookie('warning','兩次密碼不相同！');
+	$_SESSION['message'] = '兩次密碼不相同！';
 	header("Location: ./register.php");
 	exit;
 }
 
 if (!strong_password($pwd1)) {
-	setcookie('warning','密碼太弱拉~');
+	$_SESSION['message'] = '密碼太弱拉~';
 	header("Location: ./register.php");
 	exit;
 }
@@ -48,7 +48,8 @@ if ($exist == 0) {
 		$st->execute();
 		$db->commit();
 		
-		setcookie('warning','註冊成功！請進行登入');
+
+		$_SESSION['message'] = '註冊成功！請進行登入';
 		header("Location: ./login.php");
 		exit;
 
@@ -58,7 +59,7 @@ if ($exist == 0) {
 	}
 }
 else{
-	setcookie('warning','帳號已經被申請過了');
+	$_SESSION['message'] = '帳號已經被申請過了';
 	header("Location: ./register.php");
 	exit;
 }
