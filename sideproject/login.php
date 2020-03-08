@@ -7,7 +7,14 @@ if (is_login()) {
 	exit;
 }
 
-$remember_me = $_COOKIE['remember_me'];
+if (isset($_COOKIE['remember_me'])) {
+
+	$remember_me = $_COOKIE['remember_me'];
+
+}
+else{
+	$remember_me = 0;
+}
 
 if ($remember_me) {
 	$email = encryptDecrypt($_COOKIE['email'], 1);
@@ -18,8 +25,13 @@ else{
 	$pwd = '';
 }
 
-$message = $_SESSION['message'];
-$_SESSION['message'] = '';
+if (!isset($_SESSION['message'])) {
+	$message = '';
+}
+else{
+	$message = $_SESSION['message'];
+	$_SESSION['message'] = '';
+}
 
 echo $twig->render(
 	'login.html', [
