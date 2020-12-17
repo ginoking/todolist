@@ -2,7 +2,7 @@
 include_once __DIR__ . '/settings.php';
 
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-$pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_MAGIC_QUOTES);
+$pwd = filter_input(INPUT_POST, 'password');
 $remember_me = filter_input(INPUT_POST, 'remember_me');
 
 $sql = "select * from user where email = :email";
