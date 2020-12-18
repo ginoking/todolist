@@ -7,8 +7,6 @@ if (!is_login()) {
 	exit;
 }
 
-echo "test";
-
 $time = date("Y-m-d");
 $user_id = $_SESSION['id'];
 

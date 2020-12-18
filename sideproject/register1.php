@@ -5,8 +5,8 @@ $e_name = filter_input(INPUT_POST, 'e_name', FILTER_SANITIZE_STRING);
 $job_title = filter_input(INPUT_POST, 'job_title', FILTER_SANITIZE_STRING);
 $motto = filter_input(INPUT_POST, 'motto', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-$pwd1 = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_MAGIC_QUOTES);
-$pwd2 = filter_input(INPUT_POST, 'pwd2', FILTER_SANITIZE_MAGIC_QUOTES);
+$pwd1 = filter_input(INPUT_POST, 'pwd');
+$pwd2 = filter_input(INPUT_POST, 'pwd2');
 
 
 if ($pwd1 != $pwd2) {

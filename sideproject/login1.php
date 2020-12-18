@@ -25,7 +25,7 @@ while ($row = $st->fetch()) {
 		exit;
 	}
 	else{
-		setcookie('warning','帳號密碼錯誤！');
+		$_SESSION['message'] = '帳號密碼錯誤';
 		header("Location: ./login.php");
 		exit;
 	}
